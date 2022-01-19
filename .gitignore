@@ -35,7 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-
-### Empêcher ses fichiers d'être mis à jour
-application.properties
