@@ -38,7 +38,6 @@ public class Restaurant {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	public Restaurant(String nom, String adresse, String telephone, boolean aEmporter, boolean surPlace, double prix,
 			boolean accesPMR, String latitude, String longitude, String website, Collection<TypeRestau> typerestaus) {
