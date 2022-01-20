@@ -2,6 +2,7 @@ package fr.cardon.simpleat.controller;
 
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.cardon.simpleat.model.Restaurant;
 import fr.cardon.simpleat.model.TypeRestau;
 import fr.cardon.simpleat.repository.TypeRestauRepository;
 
@@ -34,6 +36,11 @@ public class TypeRestauController {
     @GetMapping("/type/{id}")
     public TypeRestau findTypetById(@PathVariable int id){
         return typeRestauRepository.findById(id);
+    }
+
+    @GetMapping("/restaurantbytype/{id}")
+    public List<Restaurant> findRestauByType(@PathVariable int id){
+    	return findTypetById(id).getRestaurants();
     }
 
     @PostMapping("/add-type")
