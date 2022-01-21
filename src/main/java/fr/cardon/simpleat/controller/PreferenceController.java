@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,11 +60,21 @@ public class PreferenceController {
 //		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(personne));
 //	}	
 //	
-//	@DeleteMapping(value = "/delete-restaurant/{id}")
-//	public void suppressionPerso(@PathVariable int id){
+	@DeleteMapping("/delete-preference/{idrestau}/{iduser}")
+	public void deletePreferenceById(@PathVariable int iduser, @PathVariable int idrestau ){
+		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
+		preferenceRepository.deleteById(id);
+	}
+	
+//	@DeleteMapping("/delete-pref-byrestau/{idrestau}")
+//	public void deletePreferenceByRestau(@PathVariable int idrestau ){
+//		List<Personne> list = personneRepository.findAll();
+//		 for (int i = 0; i < list.size(); i++) {
+//			 if(findPreferenceById(list.get(i).getId(),idrestau).isEmpty() == false) {
+//				 preferenceRepository.deleteById(new PreferencePK(list.get(i),new Restaurant(idrestau)));
+//			 }
+//			 //System.out.println(findPreferenceById(list.get(i).getId(),idrestau).isEmpty());			
+//		}
 //		
-//		preferenceRepository.deleteById(id);
 //	}
-
-
 }

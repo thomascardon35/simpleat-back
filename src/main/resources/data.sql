@@ -19,20 +19,20 @@ insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, ac
 insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('Physicians Total Care, Inc.', '462 Mosinee Lane', '8521719889', false, false, 4, true, '-13.5', '48.86667');
 insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('Triweld Industries, Inc.', '2482 Corscot Way', '7513208452', false, true, 2, true, '34.326903', '108.117456');
 
-insert into preference (id_restau, id_personne, note, favori) values (2, 9, 1, false);
-insert into preference (id_restau, id_personne, note, favori) values (3, 1, 5, false);
-insert into preference (id_restau, id_personne, note, favori) values (1, 9, 3, true);
-insert into preference (id_restau, id_personne, note, favori) values (4, 6, 2, false);
-insert into preference (id_restau, id_personne, note, favori) values (5, 5, 5, false);
-insert into preference (id_restau, id_personne, note, favori) values (1, 10, 1, false);
-insert into preference (id_restau, id_personne, note, favori) values (5, 3, 5, false);
-insert into preference (id_restau, id_personne, note, favori) values (1, 7, 1, true);
-insert into preference (id_restau, id_personne, note, favori) values (4, 2, 1, false);
-insert into preference (id_restau, id_personne, note, favori) values (1, 3, 5, false);
-insert into preference (id_restau, id_personne, note, favori) values (3, 10, 4, false);
-insert into preference (id_restau, id_personne, note, favori) values (3, 3, 4, true);
-insert into preference (id_restau, id_personne, note, favori) values (2, 3, 3, false);
-insert into preference (id_restau, id_personne, note, favori) values (2, 8, 3, false);
+insert into preference (id_restau, id_personne, note, favoris) values (2, 9, 1, false);
+insert into preference (id_restau, id_personne, note, favoris) values (3, 1, 5, false);
+insert into preference (id_restau, id_personne, note, favoris) values (1, 9, 3, true);
+insert into preference (id_restau, id_personne, note, favoris) values (4, 6, 2, false);
+insert into preference (id_restau, id_personne, note, favoris) values (5, 5, 5, false);
+insert into preference (id_restau, id_personne, note, favoris) values (1, 10, 1, false);
+insert into preference (id_restau, id_personne, note, favoris) values (5, 3, 5, false);
+insert into preference (id_restau, id_personne, note, favoris) values (1, 7, 1, true);
+insert into preference (id_restau, id_personne, note, favoris) values (4, 2, 1, false);
+insert into preference (id_restau, id_personne, note, favoris) values (1, 3, 5, false);
+insert into preference (id_restau, id_personne, note, favoris) values (3, 10, 4, false);
+insert into preference (id_restau, id_personne, note, favoris) values (3, 3, 4, true);
+insert into preference (id_restau, id_personne, note, favoris) values (2, 3, 3, false);
+insert into preference (id_restau, id_personne, note, favoris) values (2, 8, 3, false);
 
 insert into type (id_type, libelle) values (1, 'Kebab');
 insert into type (id_type, libelle) values (2, 'Supermarché');

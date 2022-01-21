@@ -3,6 +3,7 @@ package fr.cardon.simpleat.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -32,6 +32,7 @@ public class Restaurant {
     private String longitude;
     private String website;
     private Collection<TypeRestau> typerestaus = new ArrayList<TypeRestau>();
+    private Collection<Preference> preference = new ArrayList<Preference>();
     
     //TODO @OneToMany relier avec une collec de preferences
 
@@ -40,6 +41,17 @@ public class Restaurant {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
+	
+	public Restaurant(int id) {
+		super();
+		this.id = id;
+	}
+
+
+
+
 	public Restaurant(String nom, String adresse, String telephone, boolean aEmporter, boolean surPlace, int prix,
 			boolean accesPMR, String latitude, String longitude, String website, Collection<TypeRestau> typerestaus) {
 		super();
@@ -142,7 +154,7 @@ public class Restaurant {
 	@JoinTable(name="type_restau",
 	joinColumns = @JoinColumn(name = "id_restau"/*classe en cours*/,referencedColumnName = "id_restau" /*classe reliée*/) ,
 	inverseJoinColumns =  @JoinColumn(name = "id_type",referencedColumnName = "id_type"))
-	@JsonBackReference("typerestaus")
+	@JsonIgnore
 	public Collection<TypeRestau> getTyperestaus() {
 		return typerestaus;
 	}
@@ -150,5 +162,18 @@ public class Restaurant {
 	public void setTyperestaus(Collection<TypeRestau> typerestaus) {
 		this.typerestaus = typerestaus;
 	}
+
+	@OneToMany(mappedBy = "restau", cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	public Collection<Preference> getPreference() {
+		return preference;
+	}
+
+
+	public void setPreference(Collection<Preference> preference) {
+		this.preference = preference;
+	}
+	
+	
     
 }
