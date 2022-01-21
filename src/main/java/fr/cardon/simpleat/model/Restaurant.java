@@ -3,7 +3,6 @@ package fr.cardon.simpleat.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -25,7 +26,7 @@ public class Restaurant {
     private String telephone;
     private boolean aEmporter;
     private boolean surPlace;
-    private double prix;
+    private int prix;
     private boolean accesPMR;
     private String latitude;
     private String longitude;
@@ -38,9 +39,8 @@ public class Restaurant {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
-	public Restaurant(String nom, String adresse, String telephone, boolean aEmporter, boolean surPlace, double prix,
+	public Restaurant(String nom, String adresse, String telephone, boolean aEmporter, boolean surPlace, int prix,
 			boolean accesPMR, String latitude, String longitude, String website, Collection<TypeRestau> typerestaus) {
 		super();
 		this.nom = nom;
@@ -103,11 +103,11 @@ public class Restaurant {
 		this.surPlace = surPlace;
 	}
 	@Column(nullable = true)
-	public double getPrix() {
+	public int getPrix() {
 		return prix;
 	}
-	public void setPrix(double prixMin) {
-		this.prix = prixMin;
+	public void setPrix(int prix) {
+		this.prix = prix;
 	}
 	@Column(nullable = true)
 	public boolean isAccesPMR() {
@@ -142,7 +142,7 @@ public class Restaurant {
 	@JoinTable(name="type_restau",
 	joinColumns = @JoinColumn(name = "id_restau"/*classe en cours*/,referencedColumnName = "id_restau" /*classe reliée*/) ,
 	inverseJoinColumns =  @JoinColumn(name = "id_type",referencedColumnName = "id_type"))
-	@JsonIgnoreProperties("typerestaus")
+	@JsonBackReference("typerestaus")
 	public Collection<TypeRestau> getTyperestaus() {
 		return typerestaus;
 	}

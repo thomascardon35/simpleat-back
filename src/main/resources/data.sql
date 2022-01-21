@@ -13,11 +13,11 @@ insert into personne (nom, prenom, email, password) values ('Crick', 'Andris', '
 insert into role (id_role, intitule) values (1, 'Admin');
 insert into role (id_role, intitule) values (2, 'User');
 
-insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix_min, prix_max, accespmr, latitude, longitude) values ('L Perrigo Company', '301 Thierer Trail', '3092096786', false, true, 10, 16, false, '2.1961772', '22.4708685');
-insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix_min, prix_max, accespmr, latitude, longitude) values ('Sanofi Pasteur Inc.', '9 Barnett Terrace', '6809964349', false, true, 1, 17, false, '31.45571', '34.43719');
-insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix_min, prix_max, accespmr, latitude, longitude) values ('REMEDYREPACK INC.', '3 West Park', '4565542193', true, false, 2, 20, true, '49.817777', '19.785536');
-insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix_min, prix_max, accespmr, latitude, longitude) values ('Physicians Total Care, Inc.', '462 Mosinee Lane', '8521719889', false, false, 1, 22, true, '-13.5', '48.86667');
-insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix_min, prix_max, accespmr, latitude, longitude) values ('Triweld Industries, Inc.', '2482 Corscot Way', '7513208452', false, true, 5, 13, true, '34.326903', '108.117456');
+insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('L Perrigo Company', '301 Thierer Trail', '3092096786', false, true, 1, false, '2.1961772', '22.4708685');
+insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('Sanofi Pasteur Inc.', '9 Barnett Terrace', '6809964349', false, true, 2, false, '31.45571', '34.43719');
+insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('REMEDYREPACK INC.', '3 West Park', '4565542193', true, false, 3, true, '49.817777', '19.785536');
+insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('Physicians Total Care, Inc.', '462 Mosinee Lane', '8521719889', false, false, 4, true, '-13.5', '48.86667');
+insert into restaurant (nom, adresse, telephone, a_emporter, sur_place, prix, accespmr, latitude, longitude) values ('Triweld Industries, Inc.', '2482 Corscot Way', '7513208452', false, true, 2, true, '34.326903', '108.117456');
 
 insert into preference (id_restau, id_personne, note, favori) values (2, 9, 1, false);
 insert into preference (id_restau, id_personne, note, favori) values (3, 1, 5, false);
