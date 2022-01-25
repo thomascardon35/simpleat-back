@@ -8,6 +8,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -37,7 +38,7 @@ public class PreferencePK implements Serializable {
 
 
 	@ManyToOne
-	@JoinColumn(name="id_personne", referencedColumnName ="id_personne" )
+	@PrimaryKeyJoinColumn(name="id_personne", referencedColumnName ="id_personne" )
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	public Personne getPersonne() {
 		return personne;
@@ -50,7 +51,7 @@ public class PreferencePK implements Serializable {
 
 	
 	@ManyToOne // TODO mappedBy preferences dans restaurant
-	@JoinColumn(name="id_restau",referencedColumnName ="id_restau" )
+	@PrimaryKeyJoinColumn(name="id_restau",referencedColumnName ="id_restau" )
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	public Restaurant getRestau() {
 		return restau;

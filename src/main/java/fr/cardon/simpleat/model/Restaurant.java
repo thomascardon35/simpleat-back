@@ -3,6 +3,7 @@ package fr.cardon.simpleat.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,7 +34,7 @@ public class Restaurant {
     private String longitude;
     private String website;
     private Collection<TypeRestau> typerestaus = new ArrayList<TypeRestau>();
-    
+    private Collection<Preference> preference = new ArrayList<Preference>();
     //TODO @OneToMany relier avec une collec de preferences
 
 	public Restaurant() {
@@ -149,6 +151,18 @@ public class Restaurant {
 
 	public void setTyperestaus(Collection<TypeRestau> typerestaus) {
 		this.typerestaus = typerestaus;
+	}
+	
+
+	@OneToMany(mappedBy = "preferencePK.restau", cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	public Collection<Preference> getPreference() {
+		return preference;
+	}
+
+
+	public void setPreference(Collection<Preference> preference) {
+		this.preference = preference;
 	}
     
 }
