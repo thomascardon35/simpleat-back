@@ -73,7 +73,6 @@ insert into preference (restau_id_restau, personne_id_personne, note, favori) va
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 3, 3, false);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 8, 3, false);
 
-
 insert into type (id_type, libelle) values (1, 'Kebab');
 insert into type (id_type, libelle) values (2, 'Supermarché');
 insert into type (id_type, libelle) values (3, 'Boulangerie');

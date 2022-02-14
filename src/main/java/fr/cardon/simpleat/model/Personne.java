@@ -36,12 +36,6 @@ public class Personne {
 	}
 	
 
-	public Personne(int id) {
-		super();
-		this.id = id;
-	}
-
-
 	public Personne(String nom, String prenom, String email, String password) {
 		super();
 		this.nom = nom;
@@ -128,8 +122,5 @@ public class Personne {
 	public void setPreference(Collection<Preference> preference) {
 		this.preference = preference;
 	}
-
-	
-	
 
 }
