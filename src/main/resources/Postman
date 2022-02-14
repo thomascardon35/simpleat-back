@@ -169,15 +169,19 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/preference/5/5",
+
+							"raw": "localhost:8080/preference/1/3",
+
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"preference",
-								"5",
-								"5"
+
+								"1",
+								"3"
+
 							]
 						}
 					},
@@ -208,7 +212,9 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"preferencePK\": {\r\n        \"personne\": {\r\n            \"id\": 10\r\n        },\r\n        \"restau\": {\r\n            \"id\": 2\r\n        }\r\n    },\r\n    \"note\": 5,\r\n    \"favori\": true\r\n}",
+
+							"raw": "{\r\n    \"personne\": {\r\n        \"id\": 1\r\n    },\r\n    \"restau\": {\r\n        \"id\": 5\r\n    },\r\n    \"note\": 5,\r\n    \"favoris\": true\r\n}",
+
 							"options": {
 								"raw": {
 									"language": "json"

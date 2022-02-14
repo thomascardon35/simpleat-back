@@ -65,16 +65,4 @@ public class PreferenceController {
 		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
 		preferenceRepository.deleteById(id);
 	}
-	
-//	@DeleteMapping("/delete-pref-byrestau/{idrestau}")
-//	public void deletePreferenceByRestau(@PathVariable int idrestau ){
-//		List<Personne> list = personneRepository.findAll();
-//		 for (int i = 0; i < list.size(); i++) {
-//			 if(findPreferenceById(list.get(i).getId(),idrestau).isEmpty() == false) {
-//				 preferenceRepository.deleteById(new PreferencePK(list.get(i),new Restaurant(idrestau)));
-//			 }
-//			 //System.out.println(findPreferenceById(list.get(i).getId(),idrestau).isEmpty());			
-//		}
-//		
-//	}
 }

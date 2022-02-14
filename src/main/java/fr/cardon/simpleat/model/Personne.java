@@ -116,16 +116,19 @@ public class Personne {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
+	
 
-	@OneToMany(mappedBy = "personne", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "preferencePK.personne", cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	public Collection<Preference> getPreference() {
 		return preference;
 	}
 
+
 	public void setPreference(Collection<Preference> preference) {
 		this.preference = preference;
 	}
+
 	
 	
 
