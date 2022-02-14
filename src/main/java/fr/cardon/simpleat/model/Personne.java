@@ -4,6 +4,7 @@ package fr.cardon.simpleat.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,6 +27,7 @@ public class Personne {
     private String email;
     private String password;
     private Collection<Role> roles = new ArrayList<Role>();
+    private Collection<Preference> preference = new ArrayList<Preference>();
     
     
 	public Personne() {
@@ -105,6 +109,18 @@ public class Personne {
 
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
+	}
+	
+
+	@OneToMany(mappedBy = "preferencePK.personne", cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	public Collection<Preference> getPreference() {
+		return preference;
+	}
+
+
+	public void setPreference(Collection<Preference> preference) {
+		this.preference = preference;
 	}
 
 }

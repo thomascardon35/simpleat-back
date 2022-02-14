@@ -61,11 +61,11 @@ public class PreferenceController {
 //		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(personne));
 //	}	
 //	
-//	@DeleteMapping(value = "/delete-restaurant/{id}")
-//	public void suppressionPerso(@PathVariable int id){
-//		
-//		preferenceRepository.deleteById(id);
-//	}
+	@DeleteMapping("/delete-preference/{idrestau}/{iduser}")
+	public void deletePreferenceById(@PathVariable int iduser, @PathVariable int idrestau ){
+		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
+		preferenceRepository.deleteById(id);
+	}
 
 
 }
