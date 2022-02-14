@@ -27,7 +27,6 @@ public class RestaurantController {
 	
 	@GetMapping("/restaurants")
 	public Collection<Restaurant> findAll(){
-
 		return restaurantRepository.findAll();
 	}
 	
