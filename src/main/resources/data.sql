@@ -1,14 +1,17 @@
-
-insert into personne (nom, prenom, email, password) values ('Harmond', 'Ludvig', 'lharmond0@moonfruit.com', 'pjKxIN');
-insert into personne (nom, prenom, email, password) values ('Fisbey', 'Jammal', 'jfisbey1@apache.org', 'YY0TuY6JH0di');
-insert into personne (nom, prenom, email, password) values ('Scrivener', 'Anatol', 'ascrivener2@jugem.jp', 'C4sfAW4');
-insert into personne (nom, prenom, email, password) values ('Berthelet', 'Oralla', 'oberthelet3@cnbc.com', 'ACdXxMr');
-insert into personne (nom, prenom, email, password) values ('Towe', 'Homerus', 'htowe4@home.pl', 'pQGi41q5JHY');
-insert into personne (nom, prenom, email, password) values ('Viggers', 'Gaby', 'gviggers5@xing.com', 'Gbr2M5UU');
-insert into personne (nom, prenom, email, password) values ('Willshere', 'Sheba', 'swillshere6@tinyurl.com', 'yVJmjda');
-insert into personne (nom, prenom, email, password) values ('Docksey', 'Eula', 'edocksey7@mozilla.com', '6yS7lkFpuY');
-insert into personne (nom, prenom, email, password) values ('Iglesias', 'Christen', 'ciglesias8@ebay.com', 'ottn7Qb');
-insert into personne (nom, prenom, email, password) values ('Crick', 'Andris', 'acrick9@etsy.com', 'nkmUVBeKr');
+insert into personne (nom, prenom, email, password) values ('Cardon', 'Thomas', 'thomas.cardon@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Ramiere', 'Vincent', 'vincent.ramiere@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Verger', 'Romain', 'romain.verger@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('Ribardiere', 'Paul-Emmanuel', 'paul.ribardiere@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Noris', 'William', 'william.noris@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Harmand', 'Isabelle', 'isabelle.harmand@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Bajard', 'Blandine', 'blandine.bajard@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('El hiri', 'Sana', 'sana.el-hiri@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Lucas', 'Cecile', 'cecile.lucas@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Kerkeb', 'Mohamed', 'mohamed.kerkeb@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Rinquin', 'Aline', 'aline.rinquin@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('Keddar', 'Noreddine', 'noredinne.keddar@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Tomczyk', 'Julian', 'julian.tomczyk@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('MJID', 'Hedi', 'hedi.mjid@gmail.com', 'YY0TuY6JH0di');
 
 insert into role (id_role, intitule) values (1, 'Admin');
 insert into role (id_role, intitule) values (2, 'User');
