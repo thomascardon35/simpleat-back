@@ -144,7 +144,6 @@ public class Restaurant {
 	@JoinTable(name="type_restau",
 	joinColumns = @JoinColumn(name = "id_restau"/*classe en cours*/,referencedColumnName = "id_restau" /*classe reliée*/) ,
 	inverseJoinColumns =  @JoinColumn(name = "id_type",referencedColumnName = "id_type"))
-	@JsonBackReference("typerestaus")
 	public Collection<TypeRestau> getTyperestaus() {
 		return typerestaus;
 	}
