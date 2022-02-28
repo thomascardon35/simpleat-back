@@ -68,7 +68,7 @@ public class PersonneController {
 
 	
 	@GetMapping("/users")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Collection<Personne> findAll(){
 
 		return personneRepository.findAll();
@@ -82,7 +82,7 @@ public class PersonneController {
 	}
 	
 	@PostMapping("/add-user")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> ajoutPersonne(@RequestBody Personne personne){
 		return ResponseEntity.status(HttpStatus.OK).body(personneRepository.save(personne));
 	}

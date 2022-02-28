@@ -3,8 +3,7 @@ package fr.cardon.simpleat.service;
 import java.util.List;
 import java.util.Optional;
 
-
-
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -53,8 +52,10 @@ public class PersonneServiceImpl implements PersonneService {
 
     @Override
     public String signup(Personne personne) throws ExistingUsernameException {
+    	System.out.println(personne .getNom());
         if (!personneRepository.existsByEmail(personne.getEmail())) {
-            Personne personneToSave = new Personne(personne.getEmail(), passwordEncoder.encode(personne.getPassword()), personne.getRoleList());
+        	System.out.println(personne .getEmail());
+        	Personne personneToSave = new Personne(personne.getNom(),personne.getPrenom(),personne.getEmail(), passwordEncoder.encode(personne.getPassword()), personne.getRoleList());
             personneRepository.save(personneToSave);
             return jwtTokenProvider.createToken(personne.getEmail(), personne.getRoleList());
         } else {

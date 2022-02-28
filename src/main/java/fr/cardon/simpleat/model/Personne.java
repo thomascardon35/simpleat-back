@@ -46,6 +46,18 @@ public class Personne {
 	
 	
 
+public Personne(String nom, String prenom, String email, String password, List<EnumRole> roleList) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+		this.roleList = roleList;
+	}
+
+
+
+
 public Personne(String email, String password, List<EnumRole> roleList) {
 		super();
 		this.email = email;
