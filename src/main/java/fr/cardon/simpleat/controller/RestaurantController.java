@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,12 +38,14 @@ public class RestaurantController {
 	}
 	
 	@PostMapping("/add-restaurant")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> ajoutRestaurant(@RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}
 
 	
 	@PutMapping(value = "/update-restaurant/{id}")
+	
 	public ResponseEntity<?> modifRestaurant(@PathVariable int id, @RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}	

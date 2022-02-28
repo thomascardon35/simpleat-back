@@ -3,10 +3,15 @@ package fr.cardon.simpleat.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +23,8 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+
 @Entity
 public class Personne {
 
@@ -28,6 +35,7 @@ public class Personne {
     private String password;
     private Collection<Role> roles = new ArrayList<Role>();
     private Collection<Preference> preference = new ArrayList<Preference>();
+    private List<EnumRole> roleList;
     
     
 	public Personne() {
@@ -35,6 +43,18 @@ public class Personne {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+
+public Personne(String email, String password, List<EnumRole> roleList) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.roleList = roleList;
+	}
+
+
+
 
 	public Personne(String nom, String prenom, String email, String password) {
 		super();
@@ -45,16 +65,19 @@ public class Personne {
 	}
 
 
-
-
-	public Personne(String nom, String prenom, String email, String password, Collection<Role> roles) {
+	public Personne(String nom, String prenom, String email, String password,
+			Collection<fr.cardon.simpleat.model.Role> roles, Collection<Preference> preference,
+			List<EnumRole> roleList) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.preference = preference;
+		this.roleList = roleList;
 	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -122,5 +145,22 @@ public class Personne {
 	public void setPreference(Collection<Preference> preference) {
 		this.preference = preference;
 	}
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@Enumerated(EnumType.STRING)
+	public List<EnumRole> getRoleList() {
+		return roleList;
+	}
+
+
+	public void setRoleList(List<EnumRole> roleList) {
+		this.roleList = roleList;
+	}
+
+
+
+
+
+
 
 }
