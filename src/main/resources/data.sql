@@ -111,3 +111,18 @@ insert into type_restau (id_restau, id_type) values (7, 7);
 insert into type_restau (id_restau, id_type) values (8, 5);
 insert into type_restau (id_restau, id_type) values (9, 21);
 insert into type_restau (id_restau, id_type) values (10, 7);
+
+insert into role_personne (id_perso, roles_id_role) values (1, 1);
+insert into role_personne (id_perso, roles_id_role) values (2, 1);
+insert into role_personne (id_perso, roles_id_role) values (3, 1);
+insert into role_personne (id_perso, roles_id_role) values (4, 1);
+insert into role_personne (id_perso, roles_id_role) values (5, 2);
+insert into role_personne (id_perso, roles_id_role) values (6, 2);
+insert into role_personne (id_perso, roles_id_role) values (7, 2);
+insert into role_personne (id_perso, roles_id_role) values (8, 2);
+insert into role_personne (id_perso, roles_id_role) values (9, 2);
+insert into role_personne (id_perso, roles_id_role) values (10, 2);
+insert into role_personne (id_perso, roles_id_role) values (11, 2);
+insert into role_personne (id_perso, roles_id_role) values (12, 2);
+insert into role_personne (id_perso, roles_id_role) values (13, 2);
+insert into role_personne (id_perso, roles_id_role) values (14, 2);
