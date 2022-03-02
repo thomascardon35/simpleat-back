@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
@@ -49,7 +49,7 @@ public class TypeRestau {
 	}
 
 	@ManyToMany(mappedBy="typerestaus")
-	@JsonIgnoreProperties("typerestaus")
+	@JsonBackReference("restaurants")
 	public List<Restaurant> getRestaurants() {
 		return restaurants;
 	}

@@ -1,14 +1,19 @@
+insert into personne (nom, prenom, email, password) values ('Cardon', 'Thomas', 'thomas.cardon@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Ramiere', 'Vincent', 'vincent.ramiere@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Verger', 'Romain', 'romain.verger@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('Ribardiere', 'Paul-Emmanuel', 'paul.ribardiere@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Noris', 'William', 'william.noris@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Harmand', 'Isabelle', 'isabelle.harmand@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Bajard', 'Blandine', 'blandine.bajard@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('El hiri', 'Sana', 'sana.el-hiri@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Lucas', 'Cecile', 'cecile.lucas@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('Kerkeb', 'Mohamed', 'mohamed.kerkeb@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Rinquin', 'Aline', 'aline.rinquin@gmail.com', 'C4sfAW4');
+insert into personne (nom, prenom, email, password) values ('Keddar', 'Noreddine', 'noredinne.keddar@gmail.com', 'ACdXxMr');
+insert into personne (nom, prenom, email, password) values ('Tomczyk', 'Julian', 'julian.tomczyk@gmail.com', 'pjKxIN');
+insert into personne (nom, prenom, email, password) values ('MJID', 'Hedi', 'hedi.mjid@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('BIDEN', 'Joe', 'joe@biden.fr', '$2a$10$NNfAnATNZf/MzIjrUFi5K.xqWizxv1Hil4/PyRAabKWK5DxsLPE6.');
 
-insert into personne (nom, prenom, email, password) values ('Harmond', 'Ludvig', 'lharmond0@moonfruit.com', 'pjKxIN');
-insert into personne (nom, prenom, email, password) values ('Fisbey', 'Jammal', 'jfisbey1@apache.org', 'YY0TuY6JH0di');
-insert into personne (nom, prenom, email, password) values ('Scrivener', 'Anatol', 'ascrivener2@jugem.jp', 'C4sfAW4');
-insert into personne (nom, prenom, email, password) values ('Berthelet', 'Oralla', 'oberthelet3@cnbc.com', 'ACdXxMr');
-insert into personne (nom, prenom, email, password) values ('Towe', 'Homerus', 'htowe4@home.pl', 'pQGi41q5JHY');
-insert into personne (nom, prenom, email, password) values ('Viggers', 'Gaby', 'gviggers5@xing.com', 'Gbr2M5UU');
-insert into personne (nom, prenom, email, password) values ('Willshere', 'Sheba', 'swillshere6@tinyurl.com', 'yVJmjda');
-insert into personne (nom, prenom, email, password) values ('Docksey', 'Eula', 'edocksey7@mozilla.com', '6yS7lkFpuY');
-insert into personne (nom, prenom, email, password) values ('Iglesias', 'Christen', 'ciglesias8@ebay.com', 'ottn7Qb');
-insert into personne (nom, prenom, email, password) values ('Crick', 'Andris', 'acrick9@etsy.com', 'nkmUVBeKr');
 
 insert into role (id_role, intitule) values (1, 'Admin');
 insert into role (id_role, intitule) values (2, 'User');
@@ -56,6 +61,8 @@ INSERT INTO restaurant(prix,a_emporter,sur_place,accespmr,nom,adresse,telephone,
 INSERT INTO restaurant(prix,a_emporter,sur_place,accespmr,nom,adresse,telephone,website,latitude,longitude) VALUES (2,1,1,1,'Chez Carla','6 Rue Claude Bernard, 93100 Montreuil','01 48 18 00 53','http://www.chezcarla.fr/','48.8699343','2.4507599');
 
 
+
+
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 9, 1, false);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (3, 1, 5, false);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (1, 9, 3, true);
@@ -70,6 +77,8 @@ insert into preference (restau_id_restau, personne_id_personne, note, favori) va
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (3, 3, 4, true);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 3, 3, false);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 8, 3, false);
+insert into preference (restau_id_restau, personne_id_personne, note, favori) values (5, 15, 3, false);
+insert into preference (restau_id_restau, personne_id_personne, note, favori) values (8, 15, 3, false);
 
 insert into type (id_type, libelle) values (1, 'Kebab');
 insert into type (id_type, libelle) values (2, 'Supermarché');
@@ -91,11 +100,33 @@ insert into type (id_type, libelle) values (17, 'Marocain');
 insert into type (id_type, libelle) values (18, 'Fruits de Mer');
 insert into type (id_type, libelle) values (19, 'Steack');
 insert into type (id_type, libelle) values (20, 'Vietnamien');
+insert into type (id_type, libelle) values (21, 'Bistrot');
+insert into type (id_type, libelle) values (22, 'Poulet');
+
+insert into type_restau (id_restau, id_type) values (1, 5);
+insert into type_restau (id_restau, id_type) values (2, 5);
+insert into type_restau (id_restau, id_type) values (3, 5);
+insert into type_restau (id_restau, id_type) values (4, 5);
+insert into type_restau (id_restau, id_type) values (5, 5);
+insert into type_restau (id_restau, id_type) values (6, 8);
+insert into type_restau (id_restau, id_type) values (6, 22);
+insert into type_restau (id_restau, id_type) values (7, 7);
+insert into type_restau (id_restau, id_type) values (8, 5);
+insert into type_restau (id_restau, id_type) values (9, 21);
+insert into type_restau (id_restau, id_type) values (10, 7);
 
 
-insert into type_restau (id_restau, id_type) values (1, 3);
-insert into type_restau (id_restau, id_type) values (2, 1);
-insert into type_restau (id_restau, id_type) values (3, 1);
-insert into type_restau (id_restau, id_type) values (4, 2);
-insert into type_restau (id_restau, id_type) values (5, 4);
-insert into type_restau (id_restau, id_type) values (1, 2);
+insert into role_personne (id_perso, roles_id_role) values (1, 1);
+insert into role_personne (id_perso, roles_id_role) values (2, 1);
+insert into role_personne (id_perso, roles_id_role) values (3, 1);
+insert into role_personne (id_perso, roles_id_role) values (4, 1);
+insert into role_personne (id_perso, roles_id_role) values (5, 2);
+insert into role_personne (id_perso, roles_id_role) values (6, 2);
+insert into role_personne (id_perso, roles_id_role) values (7, 2);
+insert into role_personne (id_perso, roles_id_role) values (8, 2);
+insert into role_personne (id_perso, roles_id_role) values (9, 2);
+insert into role_personne (id_perso, roles_id_role) values (10, 2);
+insert into role_personne (id_perso, roles_id_role) values (11, 2);
+insert into role_personne (id_perso, roles_id_role) values (12, 2);
+insert into role_personne (id_perso, roles_id_role) values (13, 2);
+insert into role_personne (id_perso, roles_id_role) values (14, 2);
