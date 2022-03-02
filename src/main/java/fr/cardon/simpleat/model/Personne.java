@@ -148,7 +148,7 @@ public Personne(String email, String password, List<EnumRole> roleList) {
 	
 
 	@OneToMany(mappedBy = "preferencePK.personne", cascade = CascadeType.REMOVE)
-	@JsonIgnore
+	//@JsonIgnore
 	public Collection<Preference> getPreference() {
 		return preference;
 	}

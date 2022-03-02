@@ -38,7 +38,7 @@ public class RestaurantController {
 	}
 	
 	@PostMapping("/add-restaurant")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> ajoutRestaurant(@RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}

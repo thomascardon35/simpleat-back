@@ -75,7 +75,7 @@ public class PersonneController {
 	}
 	
 	@GetMapping("/user/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Personne findPersonneById(@PathVariable int id){
 
 		return personneRepository.findById(id);
@@ -113,7 +113,7 @@ public class PersonneController {
 		return roleRepository.findCollectionById(idRole);
 	}
 	
-	@PostMapping("/sign-in")
+	@PostMapping("/signin")
 	   public ResponseEntity<JsonWebToken> signIn(@RequestBody Personne personne) {
 	        try {
 	        	// ici on créé un JWT en passant l'email et le mot de passe
