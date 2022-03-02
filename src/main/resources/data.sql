@@ -12,6 +12,8 @@ insert into personne (nom, prenom, email, password) values ('Rinquin', 'Aline', 
 insert into personne (nom, prenom, email, password) values ('Keddar', 'Noreddine', 'noredinne.keddar@gmail.com', 'ACdXxMr');
 insert into personne (nom, prenom, email, password) values ('Tomczyk', 'Julian', 'julian.tomczyk@gmail.com', 'pjKxIN');
 insert into personne (nom, prenom, email, password) values ('MJID', 'Hedi', 'hedi.mjid@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('BIDEN', 'Joe', 'joe@biden.fr', '$2a$10$NNfAnATNZf/MzIjrUFi5K.xqWizxv1Hil4/PyRAabKWK5DxsLPE6.');
+
 
 insert into role (id_role, intitule) values (1, 'Admin');
 insert into role (id_role, intitule) values (2, 'User');
@@ -75,6 +77,8 @@ insert into preference (restau_id_restau, personne_id_personne, note, favori) va
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (3, 3, 4, true);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 3, 3, false);
 insert into preference (restau_id_restau, personne_id_personne, note, favori) values (2, 8, 3, false);
+insert into preference (restau_id_restau, personne_id_personne, note, favori) values (5, 15, 3, false);
+insert into preference (restau_id_restau, personne_id_personne, note, favori) values (8, 15, 3, false);
 
 insert into type (id_type, libelle) values (1, 'Kebab');
 insert into type (id_type, libelle) values (2, 'Supermarché');
@@ -99,7 +103,6 @@ insert into type (id_type, libelle) values (20, 'Vietnamien');
 insert into type (id_type, libelle) values (21, 'Bistrot');
 insert into type (id_type, libelle) values (22, 'Poulet');
 
-
 insert into type_restau (id_restau, id_type) values (1, 5);
 insert into type_restau (id_restau, id_type) values (2, 5);
 insert into type_restau (id_restau, id_type) values (3, 5);
@@ -111,6 +114,7 @@ insert into type_restau (id_restau, id_type) values (7, 7);
 insert into type_restau (id_restau, id_type) values (8, 5);
 insert into type_restau (id_restau, id_type) values (9, 21);
 insert into type_restau (id_restau, id_type) values (10, 7);
+
 
 insert into role_personne (id_perso, roles_id_role) values (1, 1);
 insert into role_personne (id_perso, roles_id_role) values (2, 1);
