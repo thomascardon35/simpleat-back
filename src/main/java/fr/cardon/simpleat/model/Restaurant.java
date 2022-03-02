@@ -14,9 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -35,8 +33,6 @@ public class Restaurant {
     private String website;
     private Collection<TypeRestau> typerestaus = new ArrayList<TypeRestau>();
     private Collection<Preference> preference = new ArrayList<Preference>();
-    //TODO @OneToMany relier avec une collec de preferences
-
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -152,7 +148,6 @@ public class Restaurant {
 		this.typerestaus = typerestaus;
 	}
 	
-
 	@OneToMany(mappedBy = "preferencePK.restau", cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	public Collection<Preference> getPreference() {
@@ -163,5 +158,4 @@ public class Restaurant {
 	public void setPreference(Collection<Preference> preference) {
 		this.preference = preference;
 	}
-    
 }
