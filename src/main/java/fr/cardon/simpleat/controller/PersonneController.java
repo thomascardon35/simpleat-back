@@ -27,7 +27,7 @@ import fr.cardon.simpleat.repository.RoleRepository;
 import fr.cardon.simpleat.service.PersonneService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class PersonneController {
 	
 	
