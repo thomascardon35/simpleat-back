@@ -22,6 +22,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fr.cardon.simpleat.exception.InvalidJWTException;
 import fr.cardon.simpleat.model.EnumRole;
+import fr.cardon.simpleat.repository.PersonneRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -43,6 +44,9 @@ public class JwtTokenProvider {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private PersonneRepository personneRepository;
 
     /**
      * Cette méthode d'initialisation s'exécute avant le constructeur
@@ -104,6 +108,7 @@ public class JwtTokenProvider {
     public String createToken(String email, List<EnumRole> roleList){
 
         Claims claims = Jwts.claims().setSubject(email);
+        claims.put("userId", personneRepository.findByEmail(email).get().getId());
         claims.put("auth", roleList.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
 
         System.out.println("claims = "+claims);
