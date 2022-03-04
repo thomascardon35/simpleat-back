@@ -1,5 +1,5 @@
 insert into personne (nom, prenom, email, password) values ('Cardon', 'Thomas', 'thomas.cardon@gmail.com', 'pjKxIN');
-insert into personne (nom, prenom, email, password) values ('Ramiere', 'Vincent', 'vincent.ramiere1@gmail.com', 'YY0TuY6JH0di');
+insert into personne (nom, prenom, email, password) values ('Ramiere', 'Vincent', 'vincent.ramiere@gmail.com', 'YY0TuY6JH0di');
 insert into personne (nom, prenom, email, password) values ('Verger', 'Romain', 'romain.verger@gmail.com', 'C4sfAW4');
 insert into personne (nom, prenom, email, password) values ('Ribardiere', 'Paul-Emmanuel', 'paul.ribardiere@gmail.com', 'ACdXxMr');
 insert into personne (nom, prenom, email, password) values ('Noris', 'William', 'william.noris@gmail.com', 'pjKxIN');
