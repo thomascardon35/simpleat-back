@@ -49,8 +49,17 @@ public class PreferenceController {
 	}
 	
 	
-	@PostMapping("/add-preference")
-	public ResponseEntity<?> ajoutPreference(@RequestBody Preference preference){
+//	@PostMapping("/add-preference")
+//	public ResponseEntity<?> ajoutPreference(@RequestBody Preference preference){
+//		System.out.println(preference);
+//		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(preference));
+//	}
+	
+	@PostMapping("/add-preference/{iduser}/{idrestau}")
+	public ResponseEntity<?> ajoutPreference(@PathVariable int iduser, @PathVariable int idrestau ){
+		System.out.println("hello");
+		Preference preference = new Preference(new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau)));
+		
 		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(preference));
 	}
 
@@ -60,7 +69,7 @@ public class PreferenceController {
 //		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(personne));
 //	}	
 //	
-	@DeleteMapping("/delete-preference/{idrestau}/{iduser}")
+	@DeleteMapping("/delete-preference/{iduser}/{idrestau}")
 	public void deletePreferenceById(@PathVariable int iduser, @PathVariable int idrestau ){
 		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
 		preferenceRepository.deleteById(id);
