@@ -125,7 +125,7 @@ public class PersonneController {
 	        }
 	    }
 	 
-	 @PostMapping("/sign-up")
+	 @PostMapping("/signup")
 	    public ResponseEntity<JsonWebToken> signUp(@RequestBody Personne personne) {
 	        try {
 	            return ResponseEntity.ok(new JsonWebToken(personneService.signup(personne)));
