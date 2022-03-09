@@ -27,7 +27,7 @@ import fr.cardon.simpleat.repository.RoleRepository;
 import fr.cardon.simpleat.service.PersonneService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class PersonneController {
 	
 	
@@ -125,7 +125,7 @@ public class PersonneController {
 	        }
 	    }
 	 
-	 @PostMapping("/sign-up")
+	 @PostMapping("/signup")
 	    public ResponseEntity<JsonWebToken> signUp(@RequestBody Personne personne) {
 	        try {
 	            return ResponseEntity.ok(new JsonWebToken(personneService.signup(personne)));

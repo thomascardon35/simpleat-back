@@ -44,7 +44,7 @@ public class RestaurantController {
 
 	
 	@PutMapping(value = "/update-restaurant/{id}")
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> modifRestaurant(@PathVariable int id, @RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}	
