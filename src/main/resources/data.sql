@@ -84,7 +84,7 @@ INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`
 INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`,`nom`,`prix`,`sur_place`,`telephone`,`website`) VALUES (1,NULL,'78 Av. de la Résistance, 93100 Montreuil','48.86260826926845','2.4370469579964404','O Bon Coin',1,1,'0953523586','');
 INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`,`nom`,`prix`,`sur_place`,`telephone`,`website`) VALUES (1,NULL,'14 Rue du Capitaine Dreyfus, 93100 Montreuil','48.85828992238344','2.437848545198565','Kashmir Café',2,1,'0143633386','http://www.kashmircafe.fr/');
 INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`,`nom`,`prix`,`sur_place`,`telephone`,`website`) VALUES (1,NULL,'45 Bd Paul Vaillant Couturier, 93100 Montreuil','48.86615467929139','2.4442899980905284','Le Marrakech',3,1,'0148589402','');
-INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`,`nom`,`prix`,`sur_place`,`telephone`,`website`) VALUES (1,NULL,'7 Bd Rouget de Lisle, 93100 Montreuil','48.86133951184523','2.4407883330629856','BOLKIRI Montreuil Street Food Viêt',2,1,'0184671708','http://bolkiri.fr/');
+INSERT INTO restaurant (`a_emporter`,`accespmr`,`adresse`,`latitude`,`longitude`,`nom`,`prix`,`sur_place`,`telephone`,`website`) VALUES (1,NULL,'7 Bd Rouget de Lisle, 93100 Montreuil','48.86133951184523','2.4407883330629856','BOLKIRI',2,1,'0184671708','http://bolkiri.fr/');
 
 
 
