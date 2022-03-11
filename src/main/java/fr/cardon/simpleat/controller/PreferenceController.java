@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ public class PreferenceController {
 	private RestaurantRepository restaurantRepository;
 	
 	@GetMapping("/preferences")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Collection<Preference> findAll(){
 
 		return preferenceRepository.findAll();
@@ -42,6 +44,7 @@ public class PreferenceController {
 	
 	
 	@GetMapping("/preference/{iduser}/{idrestau}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Optional<Preference> findPreferenceById(@PathVariable int iduser, @PathVariable int idrestau ){
 		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
 		System.out.println(iduser);
@@ -56,6 +59,7 @@ public class PreferenceController {
 //	}
 	
 	@PostMapping("/add-preference/{iduser}/{idrestau}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public ResponseEntity<?> ajoutPreference(@PathVariable int iduser, @PathVariable int idrestau ){
 		System.out.println("hello");
 		Preference preference = new Preference(new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau)));
@@ -70,6 +74,7 @@ public class PreferenceController {
 //	}	
 //	
 	@DeleteMapping("/delete-preference/{iduser}/{idrestau}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public void deletePreferenceById(@PathVariable int iduser, @PathVariable int idrestau ){
 		PreferencePK id = new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau));
 		preferenceRepository.deleteById(id);
