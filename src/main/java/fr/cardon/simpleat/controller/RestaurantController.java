@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,28 +27,33 @@ public class RestaurantController {
 	private RestaurantRepository restaurantRepository;
 	
 	@GetMapping("/restaurants")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Collection<Restaurant> findAll(){
 
 		return restaurantRepository.findAll();
 	}
 	
 	@GetMapping("/restaurant/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Restaurant findRestaurantById(@PathVariable int id){
 		return restaurantRepository.findById(id);
 	}
 	
 	@PostMapping("/add-restaurant")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> ajoutRestaurant(@RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}
 
 	
 	@PutMapping(value = "/update-restaurant/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> modifRestaurant(@PathVariable int id, @RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}	
 	
 	@DeleteMapping(value = "/delete-restaurant/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void suppressionRestaurant(@PathVariable int id){
 		
 		restaurantRepository.deleteById(id);

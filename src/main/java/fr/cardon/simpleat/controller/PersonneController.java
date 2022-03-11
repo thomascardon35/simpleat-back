@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.cardon.simpleat.dto.JsonWebToken;
+import fr.cardon.simpleat.exception.ExistingUsernameException;
+import fr.cardon.simpleat.exception.InvalidCredentialsException;
 import fr.cardon.simpleat.model.Personne;
-import fr.cardon.simpleat.model.Role;
 import fr.cardon.simpleat.repository.PersonneRepository;
-import fr.cardon.simpleat.repository.RoleRepository;
+import fr.cardon.simpleat.service.PersonneService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class PersonneController {
 	
 	
@@ -29,7 +33,9 @@ public class PersonneController {
 	private PersonneRepository personneRepository;
 	
 	@Autowired
-	private RoleRepository roleRepository;
+	private PersonneService personneService;
+	
+	
 	
 	@GetMapping("/")
 	@ResponseBody
@@ -40,7 +46,6 @@ public class PersonneController {
 		p1.setPrenom("pouet");
 		p1.setEmail("pouetcoco@gmail.com");
 		p1.setPassword("hjfdzov");
-		p1.setRoles(findRoleById(2));
 		
 		//ajoutPersonne(p1);
 		
@@ -57,24 +62,28 @@ public class PersonneController {
 
 	
 	@GetMapping("/users")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Collection<Personne> findAll(){
 
 		return personneRepository.findAll();
 	}
 	
 	@GetMapping("/user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Personne findPersonneById(@PathVariable int id){
 
 		return personneRepository.findById(id);
 	}
 	
-	@PostMapping("/add-user")
-	public ResponseEntity<?> ajoutPersonne(@RequestBody Personne personne){
-		return ResponseEntity.status(HttpStatus.OK).body(personneRepository.save(personne));
-	}
+//	@PostMapping("/add-user")
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	public ResponseEntity<?> ajoutPersonne(@RequestBody Personne personne){
+//		return ResponseEntity.status(HttpStatus.OK).body(personneRepository.save(personne));
+//	}
 
 	
 	@PutMapping(value = "/update-user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> modifPerso(@PathVariable int id, @RequestBody Personne personne){
 
 //		Personne persoAModif= null;
@@ -87,6 +96,7 @@ public class PersonneController {
 	}	
 	
 	@DeleteMapping(value = "/delete-user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void suppressionPerso(@PathVariable int id){
 //		Personne persoASuppr= new Personne();
 //		persoASuppr = findById(id);
@@ -95,9 +105,28 @@ public class PersonneController {
 	}
 
 	
-	public Collection<Role> findRoleById(int idRole){
-		return roleRepository.findCollectionById(idRole);
-	}
+	@PostMapping("/signin")
+	public ResponseEntity<JsonWebToken> signIn(@RequestBody Personne personne) {
+        try {
+        	// ici on créé un JWT en passant l'email et le mot de passe
+        	// récupéré de l'objet user passé en paramètre.
+            return ResponseEntity.ok(new JsonWebToken(personneService.signin(personne.getEmail(), personne.getPassword())));
+        } catch (InvalidCredentialsException ex) {
+        	// on renvoie une réponse négative
+            return ResponseEntity.badRequest().build();
+        }
+    }
+	 
+	 @PostMapping("/signup")
+	 @PreAuthorize("hasRole('ROLE_ADMIN')")
+	    public ResponseEntity<JsonWebToken> signUp(@RequestBody Personne personne) {
+	        try {
+	            return ResponseEntity.ok(new JsonWebToken(personneService.signup(personne)));
+	        } catch (ExistingUsernameException ex) {
+	            return ResponseEntity.badRequest().build();
+	        }
+	    }
+
 	
 //	public Personne findById(int id) {
 //		return personneRepository.getById(id);

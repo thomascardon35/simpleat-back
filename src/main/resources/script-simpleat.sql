@@ -1,3 +1,85 @@
+DROP SCHEMA  IF EXISTS `simpleat`;
+
+CREATE SCHEMA IF NOT EXISTS `simpleat` DEFAULT CHARACTER SET utf8mb4 ;
+USE `simpleat` ;
+
+CREATE TABLE IF NOT EXISTS `simpleat`.`personne` (
+	`id_personne` INT NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL,
+	`nom` VARCHAR(255) NOT NULL,
+	`password` VARCHAR(255) NOT NULL,
+	`prenom` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id_personne`)
+);
+
+CREATE TABLE IF NOT EXISTS `simpleat`.`personne_role_list` (
+	`personne_id_personne` INT NOT NULL,
+	`role_list` VARCHAR(255) NULL DEFAULT NULL,
+	INDEX (`personne_id_personne`),
+	FOREIGN KEY (`personne_id_personne`)
+	REFERENCES `simpleat`.`personne` (`id_personne`)
+);
+    
+CREATE TABLE IF NOT EXISTS `simpleat`.`restaurant` (
+	`id_restau` INT NOT NULL AUTO_INCREMENT,
+	`a_emporter` BOOLEAN NULL DEFAULT NULL,
+	`accespmr` BOOLEAN NULL DEFAULT NULL,
+	`adresse` VARCHAR(255) NOT NULL,
+	`latitude` VARCHAR(255) NOT NULL,
+	`longitude` VARCHAR(255) NOT NULL,
+	`nom` VARCHAR(255) NOT NULL,
+	`prix` INT NULL DEFAULT NULL,
+	`sur_place` BOOLEAN NULL DEFAULT NULL,
+	`telephone` VARCHAR(255) NULL DEFAULT NULL,
+	`website` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`id_restau`)
+);
+  
+CREATE TABLE IF NOT EXISTS `simpleat`.`preference` (
+	`favori` BOOLEAN NULL DEFAULT NULL,
+	`note` INT NULL DEFAULT NULL,
+	`restau_id_restau` INT NOT NULL,
+	`personne_id_personne` INT NOT NULL,
+	PRIMARY KEY (`personne_id_personne`, `restau_id_restau`),
+	INDEX (`restau_id_restau`),
+    INDEX (`personne_id_personne`),
+	FOREIGN KEY (`restau_id_restau`)
+	REFERENCES `simpleat`.`restaurant` (`id_restau`),
+	FOREIGN KEY (`personne_id_personne`)
+	REFERENCES `simpleat`.`personne` (`id_personne`)
+);
+
+CREATE TABLE IF NOT EXISTS `simpleat`.`reservation` (
+	`date_resa` DATETIME NOT NULL,
+	`nb_personne` INT NOT NULL,
+	`id_restau` INT NOT NULL,
+	`id_personne` INT NOT NULL,
+	PRIMARY KEY (`date_resa`, `id_personne`, `id_restau`),
+	INDEX (`id_restau`),
+	INDEX (`id_personne`),
+	FOREIGN KEY (`id_restau`)
+	REFERENCES `simpleat`.`restaurant` (`id_restau`),
+	FOREIGN KEY (`id_personne`)
+	REFERENCES `simpleat`.`personne` (`id_personne`)
+);
+
+CREATE TABLE IF NOT EXISTS `simpleat`.`type` (
+	`id_type` INT NOT NULL AUTO_INCREMENT,
+	`libelle` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id_type`)
+);
+
+CREATE TABLE IF NOT EXISTS `simpleat`.`type_restau` (
+	`id_restau` INT NOT NULL,
+	`id_type` INT NOT NULL,
+	INDEX (`id_type`) ,
+	INDEX (`id_restau` ) ,
+	FOREIGN KEY (`id_type`)
+	REFERENCES `simpleat`.`type` (`id_type`),
+	FOREIGN KEY (`id_restau`)
+	REFERENCES `simpleat`.`restaurant` (`id_restau`)
+);
+
 insert into personne (nom, prenom, email, password) values ('Cardon', 'Thomas', 'thomas.cardon@gmail.com', '$2a$10$724bLjLyGOEKTBbHy.s3C.ETc.HuBnhEoCOuoO7.Ts7kyPbz6hkme');
 insert into personne (nom, prenom, email, password) values ('Ramiere', 'Vincent', 'vincent.ramiere@gmail.com', '$2a$10$x6.VyO9PCMXSPsi5/m/Hze9xOP.IUdYbaye7cNFc.PfyuRuVLbG7e');
 insert into personne (nom, prenom, email, password) values ('Verger', 'Romain', 'romain.verger@gmail.com', '$2a$10$oe/h0ZDpi6xFmTj8CvDMDe13hoEGv0DhHziY7GUatbb9ETcRw/8RG');
@@ -146,5 +228,3 @@ INSERT INTO type_restau (`id_restau`,`id_type`) VALUES (50,15);
 INSERT INTO type_restau (`id_restau`,`id_type`) VALUES (51,16);
 INSERT INTO type_restau (`id_restau`,`id_type`) VALUES (52,17);
 INSERT INTO type_restau (`id_restau`,`id_type`) VALUES (53,20);
-
-
