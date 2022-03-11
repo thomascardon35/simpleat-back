@@ -27,17 +27,19 @@ public class RestaurantController {
 	private RestaurantRepository restaurantRepository;
 	
 	@GetMapping("/restaurants")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Collection<Restaurant> findAll(){
 		return restaurantRepository.findAll();
 	}
 	
 	@GetMapping("/restaurant/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Restaurant findRestaurantById(@PathVariable int id){
 		return restaurantRepository.findById(id);
 	}
 	
 	@PostMapping("/add-restaurant")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> ajoutRestaurant(@RequestBody Restaurant personne){
 		return ResponseEntity.status(HttpStatus.OK).body(restaurantRepository.save(personne));
 	}
@@ -50,6 +52,7 @@ public class RestaurantController {
 	}	
 	
 	@DeleteMapping(value = "/delete-restaurant/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void suppressionRestaurant(@PathVariable int id){
 		
 		restaurantRepository.deleteById(id);
