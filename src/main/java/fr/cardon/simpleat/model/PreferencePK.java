@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -40,7 +41,7 @@ public class PreferencePK implements Serializable {
 
 	@ManyToOne
 	@PrimaryKeyJoinColumn(name="id_personne", referencedColumnName ="id_personne" )
-	@JsonIgnore
+	@JsonBackReference("personne")
 	public Personne getPersonne() {
 		return personne;
 	}

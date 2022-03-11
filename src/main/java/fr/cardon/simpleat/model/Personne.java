@@ -33,7 +33,6 @@ public class Personne {
     private String prenom;
     private String email;
     private String password;
-    private Collection<Role> roles = new ArrayList<Role>();
     private Collection<Preference> preference = new ArrayList<Preference>();
     private List<EnumRole> roleList;
     
@@ -77,19 +76,6 @@ public Personne(String email, String password, List<EnumRole> roleList) {
 	}
 
 
-	public Personne(String nom, String prenom, String email, String password,
-			Collection<fr.cardon.simpleat.model.Role> roles, Collection<Preference> preference,
-			List<EnumRole> roleList) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-		this.preference = preference;
-		this.roleList = roleList;
-	}
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -131,19 +117,6 @@ public Personne(String email, String password, List<EnumRole> roleList) {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@ManyToMany
-	@JoinTable(name="role_personne",
-	joinColumns = @JoinColumn(name = "id_perso"/*nom créé dans table asso*/,referencedColumnName = "id_personne" /*classe en cours*/) )
-	@JsonIgnoreProperties("roles")
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-
-
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
 	}
 	
 

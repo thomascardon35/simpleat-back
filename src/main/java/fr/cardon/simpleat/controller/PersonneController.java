@@ -21,9 +21,7 @@ import fr.cardon.simpleat.dto.JsonWebToken;
 import fr.cardon.simpleat.exception.ExistingUsernameException;
 import fr.cardon.simpleat.exception.InvalidCredentialsException;
 import fr.cardon.simpleat.model.Personne;
-import fr.cardon.simpleat.model.Role;
 import fr.cardon.simpleat.repository.PersonneRepository;
-import fr.cardon.simpleat.repository.RoleRepository;
 import fr.cardon.simpleat.service.PersonneService;
 
 @RestController
@@ -33,9 +31,6 @@ public class PersonneController {
 	
 	@Autowired
 	private PersonneRepository personneRepository;
-	
-	@Autowired
-	private RoleRepository roleRepository;
 	
 	@Autowired
 	private PersonneService personneService;
@@ -51,7 +46,6 @@ public class PersonneController {
 		p1.setPrenom("pouet");
 		p1.setEmail("pouetcoco@gmail.com");
 		p1.setPassword("hjfdzov");
-		p1.setRoles(findRoleById(2));
 		
 		//ajoutPersonne(p1);
 		
@@ -68,27 +62,28 @@ public class PersonneController {
 
 	
 	@GetMapping("/users")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Collection<Personne> findAll(){
 
 		return personneRepository.findAll();
 	}
 	
 	@GetMapping("/user/{id}")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public Personne findPersonneById(@PathVariable int id){
 
 		return personneRepository.findById(id);
 	}
 	
-	@PostMapping("/add-user")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<?> ajoutPersonne(@RequestBody Personne personne){
-		return ResponseEntity.status(HttpStatus.OK).body(personneRepository.save(personne));
-	}
+//	@PostMapping("/add-user")
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	public ResponseEntity<?> ajoutPersonne(@RequestBody Personne personne){
+//		return ResponseEntity.status(HttpStatus.OK).body(personneRepository.save(personne));
+//	}
 
 	
 	@PutMapping(value = "/update-user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> modifPerso(@PathVariable int id, @RequestBody Personne personne){
 
 //		Personne persoAModif= null;
@@ -101,6 +96,7 @@ public class PersonneController {
 	}	
 	
 	@DeleteMapping(value = "/delete-user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void suppressionPerso(@PathVariable int id){
 //		Personne persoASuppr= new Personne();
 //		persoASuppr = findById(id);
@@ -109,23 +105,20 @@ public class PersonneController {
 	}
 
 	
-	public Collection<Role> findRoleById(int idRole){
-		return roleRepository.findCollectionById(idRole);
-	}
-	
 	@PostMapping("/signin")
-	   public ResponseEntity<JsonWebToken> signIn(@RequestBody Personne personne) {
-	        try {
-	        	// ici on créé un JWT en passant l'email et le mot de passe
-	        	// récupéré de l'objet user passé en paramètre.
-	            return ResponseEntity.ok(new JsonWebToken(personneService.signin(personne.getEmail(), personne.getPassword())));
-	        } catch (InvalidCredentialsException ex) {
-	        	// on renvoie une réponse négative
-	            return ResponseEntity.badRequest().build();
-	        }
-	    }
+	public ResponseEntity<JsonWebToken> signIn(@RequestBody Personne personne) {
+        try {
+        	// ici on créé un JWT en passant l'email et le mot de passe
+        	// récupéré de l'objet user passé en paramètre.
+            return ResponseEntity.ok(new JsonWebToken(personneService.signin(personne.getEmail(), personne.getPassword())));
+        } catch (InvalidCredentialsException ex) {
+        	// on renvoie une réponse négative
+            return ResponseEntity.badRequest().build();
+        }
+    }
 	 
-	 @PostMapping("/sign-up")
+	 @PostMapping("/signup")
+	 @PreAuthorize("hasRole('ROLE_ADMIN')")
 	    public ResponseEntity<JsonWebToken> signUp(@RequestBody Personne personne) {
 	        try {
 	            return ResponseEntity.ok(new JsonWebToken(personneService.signup(personne)));
