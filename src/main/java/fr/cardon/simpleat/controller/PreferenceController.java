@@ -61,8 +61,8 @@ public class PreferenceController {
 	@PostMapping("/add-preference/{iduser}/{idrestau}")
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_READER')")
 	public ResponseEntity<?> ajoutPreference(@PathVariable int iduser, @PathVariable int idrestau ){
-		System.out.println("hello");
-		Preference preference = new Preference(new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau)));
+		//System.out.println("hello");
+		Preference preference = new Preference(new PreferencePK(personneRepository.getById(iduser) ,restaurantRepository.getById(idrestau)),true);
 		
 		return ResponseEntity.status(HttpStatus.OK).body(preferenceRepository.save(preference));
 	}

@@ -26,6 +26,12 @@ public class Preference {
 		this.preferencePK = preferencePK;
 	}
 
+	public Preference(PreferencePK preferencePK,boolean favoris) {
+		super();
+		this.preferencePK = preferencePK;
+		this.favoris = favoris;
+	}
+	
 	public Preference(PreferencePK preferencePK, int note, boolean favoris) {
 		super();
 		this.preferencePK = preferencePK;
